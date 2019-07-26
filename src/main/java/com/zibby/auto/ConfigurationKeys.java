@@ -13,5 +13,5 @@ public interface ConfigurationKeys {
 
     String BROWSER = "selenium.browser";
 
-    static String prefix(String key) { return "anthem.auto." + key; }
+    static String prefix(String key) { return "zibby.auto." + key; }
 }

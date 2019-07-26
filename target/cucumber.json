@@ -1,0 +1,345 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 40,
+        "name": "",
+        "description": "Verify that the payment due date has moved to the next payment array and displays correctly across \nCart, Contract, Customer Portal and LMS when the time difference between lease origination date and the next pay date is less than 5 business days.",
+        "id": "pay-frequency-flows;;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8,
+            "name": "a user with a valid set of credentials username \"HeyArzie\" and password \"test\"",
+            "match": {},
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9,
+            "name": "user sees the welcome page enters customer mobile number.",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 10,
+            "name": "user initiates a new application by entering phone number and verification code",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 11,
+            "name": "enter demographic information with first name as \"John\"",
+            "match": {},
+            "matchedColumns": [
+              2
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 12,
+            "name": "enters last name as \"Bonham\"",
+            "match": {},
+            "matchedColumns": [
+              3
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 13,
+            "name": "enters date of birth as \"\u003cdateOfBirth\u003e\"",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 14,
+            "name": "enters SSN or ITIN as \"694949898\"",
+            "match": {},
+            "matchedColumns": [
+              5
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 15,
+            "name": "enters email ID as \"sunil.geddam@cognical.com\"",
+            "match": {},
+            "matchedColumns": [
+              6
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 16,
+            "name": "enters billing address as \"12911 Alton Sq\"",
+            "match": {},
+            "matchedColumns": [
+              7
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 17,
+            "name": "enter second address line as \"Apt 202\"",
+            "match": {},
+            "matchedColumns": [
+              8
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 18,
+            "name": "enter city as \"Herndon\"",
+            "match": {},
+            "matchedColumns": [
+              9
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 19,
+            "name": "selects state as \"VA\"",
+            "match": {},
+            "matchedColumns": [
+              10
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 20,
+            "name": "enters zipcode as \"20170\" and clicks continue",
+            "match": {},
+            "matchedColumns": [
+              11
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 21,
+            "name": "Lands on Pay frequency",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 22,
+            "name": "Enters Salary \u003c\"salary\"\u003e for the term  \"Yearly\"",
+            "match": {},
+            "matchedColumns": [
+              13
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23,
+            "name": "Enters Pay Frequency as \"monthly\"",
+            "match": {},
+            "matchedColumns": [
+              14
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24,
+            "name": "Enters Last Pay date as \"6/24/2019\"",
+            "match": {},
+            "matchedColumns": [
+              15
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "comments": [
+              {
+                "line": 25,
+                "value": "#(5 or less days from Todays Date)"
+              }
+            ],
+            "line": 26,
+            "name": "Enter Next Pay Date \"lessThan5\"",
+            "match": {},
+            "matchedColumns": [
+              16
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 27,
+            "name": "Selects Direct Deposit as \"yes\"",
+            "match": {},
+            "matchedColumns": [
+              17
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 28,
+            "name": "hits Continue and lands on Preapproval Page",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 29,
+            "name": "user adds item to cart",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 30,
+            "name": "verify the item is added to cart",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 31,
+            "name": "Verify the Payment due date next cycle on the payment array displays as the customer\u0027s due date",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 32,
+            "name": "user Navigates to Checkout",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 33,
+            "name": "Verify the lease details as Rental Term and Payment Schedule begin and end dates correspond to the payment due date",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 34,
+            "name": "user processes the lease by making a payment",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 35,
+            "name": "user Navigates to LMS",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 36,
+            "name": "pulls up the lease",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 37,
+            "name": "verify the payment due date on the summary page aligns with contract and cart dates.",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@Demo"
+          },
+          {
+            "line": 3,
+            "name": "@PayFrequency"
+          }
+        ]
+      }
+    ],
+    "name": "Pay Frequency flows",
+    "description": "",
+    "id": "pay-frequency-flows",
+    "keyword": "Feature",
+    "uri": "PayFrequency.feature"
+  }
+]

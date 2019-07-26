@@ -1,59 +1,66 @@
 package com.zibby.pages;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
 
-public class LoginPage {
+import com.zibby.auto.AbstractIolsPage;
+import com.zibby.auto.PageUtil;
+import com.zibby.auto.WebDriverUtil;
 
-	WebDriver driver;
+public class LoginPage extends AbstractIolsPage {
 
-	@FindBy(name = "uid")
-	By userName;
+	WebDriver driver = WebDriverUtil.driver();
+	
+	
+	private By retailerLogin = By.xpath("//*[@ui-sref='ext-login.retailer']");
+	
+	private By customerLogin = By.xpath("//a[@href='#/ext-login/customer/username']");
+	
+	private By userName = By.xpath("//*[@name='username']");
 
-	@FindBy(linkText = "/login")
-	By loginButton;
+	private By password = By.xpath("//*[@name='password']");
 
-	@FindBy(name = "password")
-	By password;
+	private By continueBtn = By.xpath("//button[@type='submit']");
+	
+	private By loginAsCustomer = By.xpath("//a[@class='login-as-other']");
 
-	@FindBy(name = "btnLogin")
-	By login;
+	private By confirmCookie = By.xpath("//a[@id='hs-eu-confirmation-button']");
 
-	@FindBy(className = "input-wrap")
-	By number;
+	private By logos = By.xpath("//*[@title='Zibby']");
 
-	@FindBy(xpath = "//a[@id='hs-eu-confirmation-button']")
-	By confirmCookie;
+	private By logo = By.xpath("//a[@title='Zibby']");
 
-	public LoginPage(WebDriver driver) {
+	@Override
+	protected By defineUniqueElement() {
+		return logo;
+	}
+	
+	public void getIframe(final WebDriver driver) {
+	    final List<WebElement> iframes = driver.findElements(By.tagName("iframe"));
+	    for (WebElement iframe : iframes) {
+	     System.out.println(iframe);  
+	    }
+	}
 
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+	public void performLogin(String strUserName, String strPassword) throws InterruptedException {
+
+		waitForElement(logo);
+		waitForElement(confirmCookie).click();
+		waitForElement(logo);
+		PageUtil.waitForPagetoLoad(5);
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='/ng/retailer/login.html#ext-login/select']")));
+		
+		waitForElement(retailerLogin).click();
+		
+		waitForElement(userName).sendKeys(strUserName);
+		waitForElement(password).sendKeys(strPassword);
+		
+		waitForElement(continueBtn).click();
 
 	}
 
-	public void login(String strUserName, String strPasword) throws InterruptedException {
-
-		driver.get("https://qa.zibby.com/app/login");
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-
-		driver.findElement(confirmCookie).click();
-
-		driver.findElement(userName).sendKeys(strUserName);
-		driver.findElement(password).sendKeys(strPasword);
-		driver.findElement(login).click();
-	}
-
-	public void setNumber(String phoneNumber) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

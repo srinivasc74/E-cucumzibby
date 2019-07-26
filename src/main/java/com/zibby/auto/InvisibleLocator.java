@@ -1,5 +1,7 @@
 package com.zibby.auto;
 
-public class InvisibleLocator {
-
+/**
+ * Marker interface to indicate that the located element isn't visible.
+ */
+public interface InvisibleLocator {
 }

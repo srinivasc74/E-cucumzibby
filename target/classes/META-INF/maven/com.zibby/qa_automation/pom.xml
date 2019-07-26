@@ -76,6 +76,92 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+
 
 	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.demo>false</project.demo>
+		<java.version>1.8</java.version>
+		<selenium.gridurl>http://30.135.209.43:4444/wd/hub</selenium.gridurl>
+		<selenium.remote>false</selenium.remote>
+		<selenium.browser>CHROME</selenium.browser>
+		<selenium.pagetimeout>3000</selenium.pagetimeout>
+		<selenium.elementtimeout>3000</selenium.elementtimeout>
+		<selenium.snapshotonfailure>Y</selenium.snapshotonfailure>
+		<selenium.snapshotonsuccess>Y</selenium.snapshotonsuccess>
+		<suppress.screenshot>false</suppress.screenshot>
+		<forkCount>1</forkCount>
+		<execution.environment>QA</execution.environment>
+		<webdriver.ispdf.driver>true</webdriver.ispdf.driver>
+		<webdriver.chrome.driver>C:\\drivers\\chromedriver.exe</webdriver.chrome.driver>
+		<webdriver.gecko.driver>C:\\drivers\\geckodriver.exe</webdriver.gecko.driver>
+		<webdriver.ie.driver>C:\\drivers\\IEDriverServer.exe</webdriver.ie.driver>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>3.15.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>cucumber-jvm-example</projectName>
+							<!-- optional, per documentation set this to "true" to bypass generation 
+								of Cucumber Reports entirely, defaults to false if not specified -->
+							<skip>false</skip>
+							<!-- output directory for the generated report -->
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<!-- optional, defaults to outputDirectory if not specified -->
+							<inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
+							<jsonFiles>
+								<!-- supports wildcard or name pattern -->
+								<param>**/*.json</param>
+							</jsonFiles>
+							<!-- optional, defaults to outputDirectory if not specified -->
+							<classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
+							<classificationFiles>
+								<!-- supports wildcard or name pattern -->
+								<param>sample.properties</param>
+								<param>other.properties</param>
+							</classificationFiles>
+							<parallelTesting>false</parallelTesting>
+							<!-- optional, set true to fail build on test failures -->
+							<checkBuildResult>false</checkBuildResult>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

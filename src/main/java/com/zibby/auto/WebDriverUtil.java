@@ -1,10 +1,24 @@
 package com.zibby.auto;
 
-import com.zibby.auto.common.BrowserTypes;
-import com.zibby.auto.Configuration;
-import com.zibby.auto.common.RunSafe;
-import javafx.util.Pair;
-import org.openqa.selenium.*;
+import static org.openqa.selenium.ie.InternetExplorerDriverService.createDefaultService;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,19 +32,14 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import com.zibby.auto.common.BrowserTypes;
+import com.zibby.auto.common.RunSafe;
 
-import static org.openqa.selenium.ie.InternetExplorerDriverService.createDefaultService;
+import javafx.util.Pair;
 
 /**
  * Manages static access to a per-Thread {@link WebDriver}. Also contains a variety
  * of convenience methods for dealing with {@link WebElement}s.
- *
  */
 public final class WebDriverUtil {
 	private static final Logger LOG = LoggerFactory.getLogger(WebDriverUtil.class);
@@ -154,15 +163,15 @@ public final class WebDriverUtil {
                     capabilities.setBrowserName("firefox");
                     capabilities.setPlatform(Platform.ANY);
 					if(Configuration.REMOTE) {
-						// TODO mmorton remove this once upgraded to latest Firefox
+						// TODO 
 						capabilities.setCapability("marionette", false);
 					}
-                    webDriver = buildNonMobile(capabilities, () -> new FirefoxDriver(firefoxProfile));
+                    webDriver = buildNonMobile(capabilities, () -> new FirefoxDriver((Capabilities) firefoxProfile));
                     break;
 
                 case CHROME:
                     System.getenv();
-                    System.setProperty("webdriver.chrome.driver", Configuration.CHROME_WEBDRIVER);
+                   // System.setProperty("webdriver.chrome.driver", Configuration.CHROME_WEBDRIVER);
                     capabilities = DesiredCapabilities.chrome();
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("test-type", "start-maximized", "no-default-browser-check", "--disable-extensions");
@@ -251,7 +260,7 @@ public final class WebDriverUtil {
 	}
 
 	/**
-	 * Adds a cookie "automtion" with value "1" used to suppress behavior like ForeSee popups. <b>Note:</b> the cookie
+	 * Adds a cookie "automation" with value "1" used to suppress behavior like ForeSee popups. <b>Note:</b> the cookie
 	 * is applied to the <u>current page</u>. If the cookie needs to be added to the upcoming page,
 	 * call {@link #addAutomationCookieOnNextPage()} instead.
 	 */

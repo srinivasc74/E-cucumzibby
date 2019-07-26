@@ -11,7 +11,6 @@ import java.util.Optional;
  * A Runnable can be composed within an instance of this class or
  * passed directly into the static runSafe methods.
  *
- * @author AF04261 mmorton
  */
 public final class RunSafe implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(RunSafe.class);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="1" tests="1" time="0">
+<testcase classname="Pay Frequency flows" name="_2" time="0">
+<skipped><![CDATA[Given a user with a valid set of credentials username "HeyArzie" and password "test".undefined
+Then user sees the welcome page enters customer mobile number...............undefined
+And user initiates a new application by entering phone number and verification code.undefined
+And enter demographic information with first name as "John".................undefined
+Then enters last name as "Bonham"...........................................undefined
+Then enters date of birth as "<dateOfBirth>"................................undefined
+Then enters SSN or ITIN as "694949898"......................................undefined
+Then enters email ID as "sunil.geddam@cognical.com".........................undefined
+Then enters billing address as "12911 Alton Sq".............................undefined
+Then enter second address line as "Apt 202".................................undefined
+Then enter city as "Herndon"................................................undefined
+Then selects state as "VA"..................................................undefined
+Then enters zipcode as "20170" and clicks continue..........................undefined
+And Lands on Pay frequency..................................................undefined
+And Enters Salary <"salary"> for the term  "Yearly".........................undefined
+And Enters Pay Frequency as "monthly".......................................undefined
+And Enters Last Pay date as "6/24/2019".....................................undefined
+And Enter Next Pay Date "lessThan5".........................................undefined
+And Selects Direct Deposit as "yes".........................................undefined
+And hits Continue and lands on Preapproval Page.............................undefined
+When user adds item to cart.................................................undefined
+Then verify the item is added to cart.......................................undefined
+And Verify the Payment due date next cycle on the payment array displays as the customer's due date.undefined
+When user Navigates to Checkout.............................................undefined
+Then Verify the lease details as Rental Term and Payment Schedule begin and end dates correspond to the payment due date.undefined
+And user processes the lease by making a payment............................undefined
+When user Navigates to LMS..................................................undefined
+And pulls up the lease......................................................undefined
+Then verify the payment due date on the summary page aligns with contract and cart dates..undefined
+]]></skipped>
+</testcase>
+</testsuite>

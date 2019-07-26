@@ -1,7 +1,7 @@
 package com.zibby.auto.common;
 
 /**
- * The types of browsers supported by {@link com.anthem.auto.WebDriverUtil}.
+ * The types of browsers supported by {@link com.zibby.auto.WebDriverUtil}.
  */
 public enum BrowserTypes {
     IE, CHROME, SAFARI, FIREFOX, MOBILE_DEVICE(true), MOBILE_CONFIG(true);

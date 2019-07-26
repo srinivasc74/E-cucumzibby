@@ -30,7 +30,7 @@ public class PostgresDBConnection {
 		
 	}
 
-	   public static String selectQuery() throws SQLException {
+	   public String selectQuery() throws SQLException {
 	      Connection c = connect();
 	      Statement stmt = null;
 	      ResultSet rs = null;
@@ -52,7 +52,8 @@ public class PostgresDBConnection {
 	         System.exit(0);
 	      }
 	      System.out.println("Operation done successfully");
-		return rs.getString("application_id");
+	      
+		return rs.getString("application_id").toString();
 	   }
 	
 	
